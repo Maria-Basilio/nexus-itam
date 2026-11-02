@@ -1,5 +1,29 @@
+# Ambientes virtuais
 .venv/
+venv/
+env/
+
+# Python
 __pycache__/
-*.db
+*.py[cod]
+*.pyo
+
+# Variáveis de ambiente e credenciais
 .env
+.env.*
+!.env.example
+
+# Bancos de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Arquivos do sistema
 .DS_Store
+
+# IDEs
+.vscode/
+.idea/
