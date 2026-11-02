@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Nexus ITAM — gestão inteligente de ativos de software, licenças e fornecedores.">
+
+    <title>Nexus ITAM | Gestão de ativos de software</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar" id="sidebar">
+
+            <a class="brand" href="#" aria-label="Nexus ITAM início" data-page="overview">
+                <span class="brand-mark">N</span>
+
+                <span class="brand-copy">
+                    <strong>NEXUS</strong>
+                    <small>IT ASSET MANAGEMENT</small>
+                </span>
+            </a>
+
+            <div class="nav-label">WORKSPACE</div>
+
+            <nav class="main-nav" aria-label="Navegação principal">
+
+                <button class="nav-link active" data-page="overview">
+                    <span class="nav-icon">▦</span>
+                    Visão geral
+                </button>
+
+                <button class="nav-link" data-page="softwares">
+                    <span class="nav-icon">▣</span>
+                    Inventário de softwares
+                </button>
+
+                <button class="nav-link" data-page="licencas">
+                    <span class="nav-icon">▤</span>
+                    Licenças
+                </button>
+
+                <button class="nav-link" data-page="fornecedores">
+                    <span class="nav-icon">◇</span>
+                    Fornecedores
+                </button>
+
+                <button class="nav-link" data-page="inteligencia">
+                    <span class="nav-icon">✧</span>
+                    Inteligência Nexus
+                    <span class="nav-badge">IA</span>
+                </button>
+
+            </nav>
+
+            <!-- ÁREA INFERIOR DO MENU -->
+            <div class="sidebar-bottom">
+
+                <div class="help-card">
+
+                    <span class="help-icon">✦</span>
+
+                    <strong>Gestão mais inteligente</strong>
+
+                    <p>
+                        Acompanhe riscos e oportunidades
+                        do seu ambiente de software.
+                    </p>
+
+                    <button class="text-button" data-page="inteligencia">
+                        Ver recomendações <span>→</span>
+                    </button>
+
+                </div>
+
+                <div class="profile">
+
+                    <div class="avatar">N</div>
+
+                    <div>
+                        <strong>Workspace</strong>
+                        <small>Administrador</small>
+                    </div>
+
+                    <span class="profile-dots">•••</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ÁREA PRINCIPAL -->
+        <main class="main-area">
+
+            <!-- BARRA SUPERIOR -->
+            <header class="topbar">
+
+                <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">
+                    ☰
+                </button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <b>/</b>
+                    <strong id="breadcrumbCurrent">Visão geral</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="system-status">
+                        <i></i>
+                        Sistema operacional
+                    </span>
+
+                    <button class="icon-button" id="refreshButton" title="Atualizar dados">
+                        ↻
+                    </button>
+
+                    <div class="top-avatar">N</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTEÚDO DAS PÁGINAS -->
+            <div class="page-content">
+
+
+                <!-- ================================== -->
+                <!-- VISÃO GERAL / DASHBOARD            -->
+                <!-- ================================== -->
+
+                <section class="page-view active" id="page-overview">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <p class="eyebrow">PAINEL DE CONTROLE</p>
+
+                            <h1>Visão geral</h1>
+
+                            <p class="page-subtitle">
+                                Acompanhe a saúde do seu ambiente de software.
+                            </p>
+                        </div>
+
+                        <div class="heading-actions">
+
+                            <span class="date-chip" id="todayLabel">
+                                Resumo do ambiente
+                            </span>
+
+                            <button class="button button-primary" data-open-modal="software">
+                                ＋ Novo software
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INDICADORES -->
+                    <div class="metrics-grid" id="cards">
+
+                        <div class="metric-card skeleton"></div>
+                        <div class="metric-card skeleton"></div>
+                        <div class="metric-card skeleton"></div>
+                        <div class="metric-card skeleton"></div>
+                        <div class="metric-card skeleton"></div>
+                        <div class="metric-card skeleton"></div>
+
+                    </div>
+
+
+                    <!-- GRÁFICO E ALERTAS -->
+                    <div class="dashboard-grid">
+
+                    <section class="panel chart-panel">
+    <div class="panel-heading">
+        <div>
+            <h2>Softwares por fornecedor</h2>
+            <p>Distribuição do inventário cadastrado</p>
+        </div>
+        <span class="panel-kicker">INVENTÁRIO</span>
+    </div>
+
+    <div class="chart-wrap">
+        <canvas id="grafico"></canvas>
+
+        <div class="empty-chart" id="chartEmpty" hidden>
+            Cadastre fornecedores e softwares para visualizar o gráfico.
+        </div>
+    </div>
+</section>
+
+<section class="panel chart-panel">
+    <div class="panel-heading">
+        <div>
+            <h2>Custo anual por fornecedor</h2>
+            <p>Distribuição dos gastos com licenças</p>
+        </div>
+        <span class="panel-kicker">FINANCEIRO</span>
+    </div>
+
+    <div class="chart-wrap">
+        <canvas id="graficoCustos"></canvas>
+
+        <div class="empty-chart" id="chartCustosEmpty" hidden>
+            Cadastre licenças para visualizar os custos.
+        </div>
+    </div>
+</section>
+
+
+                        <section class="panel alerts-panel">
+
+                            <div class="panel-heading">
+
+                                <div>
+                                    <h2>Central de alertas</h2>
+                                    <p>Licenças que precisam de atenção</p>
+                                </div>
+
+                                <span class="count-pill" id="alertCount">0</span>
+
+                            </div>
+
+                            <div id="alertas" class="alert-list">
+                                <div class="empty-state compact">
+                                    Carregando alertas...
+                                </div>
+                            </div>
+
+                            <button class="panel-link" data-page="licencas">
+                                Ver todas as licenças <span>→</span>
+                            </button>
+
+                        </section>
+
+                    </div>
+
+
+                    <!-- SOFTWARES RECENTES -->
+                    <section class="panel table-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <h2>Softwares monitorados</h2>
+                                <p>Uma visão rápida dos itens do inventário</p>
+                            </div>
+
+                            <button class="button button-secondary button-small" data-page="softwares">
+                                Ver inventário completo →
+                            </button>
+
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>SOFTWARE</th>
+                                        <th>FORNECEDOR</th>
+                                        <th>VERSÃO INSTALADA</th>
+                                        <th>VERSÃO RECOMENDADA</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="recentSoftwares"></tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+
+                <!-- ================================== -->
+                <!-- INVENTÁRIO DE SOFTWARES            -->
+                <!-- ================================== -->
+
+                <section class="page-view" id="page-softwares">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <p class="eyebrow">ATIVOS DE TI</p>
+
+                            <h1>Inventário de softwares</h1>
+
+                            <p class="page-subtitle">
+                                Gerencie aplicações, versões e atualizações.
+                            </p>
+                        </div>
+
+                        <button class="button button-primary" data-open-modal="software">
+                            ＋ Cadastrar software
+                        </button>
+
+                    </div>
+
+
+                    <section class="panel">
+
+                        <div class="toolbar">
+
+                            <div class="search-box">
+                                <span>⌕</span>
+                                <input id="busca" placeholder="Buscar software..." aria-label="Buscar software">
+                            </div>
+
+                            <select id="filtroFornecedor">
+                                <option value="">Todos os fornecedores</option>
+                            </select>
+
+                            <select id="filtroDesatualizado">
+                                <option value="">Todas as versões</option>
+                                <option value="true">Desatualizados</option>
+                                <option value="false">Atualizados</option>
+                            </select>
+
+                            <button class="button button-secondary" id="btnFiltrar">
+                                Filtrar
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>SOFTWARE</th>
+                                        <th>FORNECEDOR</th>
+                                        <th>CATEGORIA</th>
+                                        <th>INSTALADA</th>
+                                        <th>RECOMENDADA</th>
+                                        <th>STATUS</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tabelaSoftwares"></tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="table-footer" id="softwareCount"></div>
+
+                    </section>
+
+                </section>
+
+
+                <!-- LICENÇAS -->
+        
+
+                <section class="page-view" id="page-licencas">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <p class="eyebrow">CONTROLE E CONFORMIDADE</p>
+
+                            <h1>Licenças</h1>
+
+                            <p class="page-subtitle">
+                                Acompanhe contratos, custos e datas de vencimento.
+                            </p>
+                        </div>
+
+                        <button class="button button-primary" data-open-modal="licenca">
+                            ＋ Nova licença
+                        </button>
+
+                    </div>
+
+
+                    <section class="panel">
+
+                        <div class="toolbar">
+
+                            <div class="search-box">
+                                <span>⌕</span>
+                                <input id="buscaLicenca" placeholder="Buscar software..." aria-label="Buscar licença">
+                            </div>
+
+                            <select id="filtroStatusLicenca">
+                                <option value="">Todos os status</option>
+                                <option value="ativa">Ativas</option>
+                                <option value="vencendo">Vencendo</option>
+                                <option value="vencida">Vencidas</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>SOFTWARE</th>
+                                        <th>FORNECEDOR</th>
+                                        <th>TIPO</th>
+                                        <th>QUANTIDADE</th>
+                                        <th>CUSTO ANUAL</th>
+                                        <th>VENCIMENTO</th>
+                                        <th>STATUS</th>
+                                        <th>AÇÕES</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tabelaLicencas"></tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="table-footer" id="licenseCount"></div>
+
+                    </section>
+
+                </section>
+
+
+
+                <!-- FORNECEDORES -->
+
+                <section class="page-view" id="page-fornecedores">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <p class="eyebrow">PARCEIROS E CONTRATOS</p>
+
+                            <h1>Fornecedores</h1>
+
+                            <p class="page-subtitle">
+                                Centralize os parceiros responsáveis pelos seus softwares.
+                            </p>
+                        </div>
+
+                        <button class="button button-primary" data-open-modal="fornecedor">
+                            ＋ Novo fornecedor
+                        </button>
+
+                    </div>
+
+
+                    <section class="panel">
+
+                        <div class="toolbar">
+
+                            <div class="search-box">
+                                <span>⌕</span>
+                                <input id="buscaFornecedor" placeholder="Buscar fornecedor..." aria-label="Buscar fornecedor">
+                            </div>
+
+                        </div>
+
+                        <div class="supplier-grid" id="listaFornecedores"></div>
+
+                    </section>
+
+                </section>
+
+
+
+                <!-- INTELIGÊNCIA NEXUS -->
+
+                <section class="page-view" id="page-inteligencia">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <p class="eyebrow">INTELIGÊNCIA ARTIFICIAL</p>
+
+                            <h1>Inteligência Nexus</h1>
+
+                            <p class="page-subtitle">
+                                Insights gerados a partir dos dados do seu ambiente.
+                            </p>
+                        </div>
+
+                        <button class="button button-primary" id="btnIA">
+                            ✧ Gerar análise
+                        </button>
+
+                    </div>
+
+
+                    <div class="ai-intro">
+
+                        <div class="ai-orb">✧</div>
+
+                        <div>
+                            <span class="ai-label">NEXUS AI · MODELO LOCAL</span>
+
+                            <h2>Decisões melhores começam com dados claros.</h2>
+
+                            <p>
+                                A análise combina regras de risco com recomendações
+                                elaboradas pelo Ollama, quando disponível.
+                            </p>
+                        </div>
+
+                        <span class="local-pill">
+                            <i></i>
+                            Processamento local
+                        </span>
+
+                    </div>
+
+
+                    <section class="panel recommendations-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <h2>Recomendações</h2>
+                                <p>Prioridades identificadas na última análise</p>
+                            </div>
+
+                            <span class="panel-kicker" id="aiSource">
+                                AGUARDANDO ANÁLISE
+                            </span>
+
+                        </div>
+
+                        <div id="recomendacoes" class="recommendation-list">
+
+                            <div class="empty-state">
+
+                                <span class="empty-icon">✧</span>
+
+                                <strong>Nenhuma análise executada</strong>
+
+                                <p>
+                                    Gere uma análise para identificar riscos,
+                                    atualizações e oportunidades de otimização.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+      <!-- modal de cadastro -->
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+
+        <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+            <div class="modal-header">
+
+                <div>
+                    <p class="eyebrow">NEXUS ITAM</p>
+                    <h2 id="modalTitle">Novo cadastro</h2>
+                </div>
+
+                <button class="icon-button" id="closeModal" aria-label="Fechar">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="entityForm">
+
+                <div id="formFields" class="form-grid"></div>
+
+                <p class="form-error" id="formError" role="alert"></p>
+
+                <div class="modal-actions">
+
+                    <button type="button" class="button button-secondary" id="cancelModal">
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="button button-primary" id="saveEntity">
+                        Salvar cadastro
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- NOTIFICAÇÕES -->
+    <div class="toast" id="toast" role="status"></div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="app.js"></script>
+
+</body>
+</html>

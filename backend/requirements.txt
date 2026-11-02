@@ -1,0 +1,7 @@
+fastapi # framework da API
+uvicorn[standard] # servidor ASGI para FastAPI
+pydantic # para validação de dados
+packaging # para manipulação de versões e dependências
+python-dotenv # para carregar variáveis de ambiente de arquivos .env
+apscheduler # para agendamento de tarefas
+requests 
