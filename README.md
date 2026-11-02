@@ -1,59 +1,76 @@
-# Nexus ITAM - Gestão de Softwares
+# Nexus ITAM — Software Asset Management
 
-**Sistema inteligente de gerenciamento de ativos de software e licenças.**
+<div align="center">
 
-O Nexus ITAM é uma aplicação desenvolvida para centralizar o gerenciamento de softwares, fornecedores e licenças de uma organização. A proposta é facilitar o controle do inventário, acompanhar vencimentos, identificar softwares desatualizados e visualizar os custos relacionados aos ativos de software.
+**Smarter software asset and license management.**
 
-O sistema também conta com uma integração com inteligência artificial local, utilizando Ollama, para gerar recomendações e apoiar a tomada de decisões.
+A centralized platform for managing software inventory, vendors, licenses, costs, and updates, with the support of locally hosted Artificial Intelligence.
 
-## Funcionalidades
+</div>
+
+---
+
+## About the Project
+
+**Nexus ITAM** is a software asset management application designed to centralize and simplify the management of an organization's software inventory, vendors, and licenses.
+
+The platform helps organizations monitor their software assets, track license expiration dates, identify outdated software, and gain visibility into software-related costs.
+
+It also integrates with **Ollama**, enabling locally hosted AI capabilities to generate recommendations and support data-driven administrative decisions.
+
+## Features
 
 ### Dashboard
-- Visualização de indicadores gerais do inventário.
-- Quantidade de softwares e fornecedores cadastrados.
-- Acompanhamento de licenças ativas, vencidas e próximas do vencimento.
-- Identificação de softwares desatualizados.
-- Visualização dos custos anuais.
-- Gráficos de softwares por fornecedor e custos por fornecedor.
 
-### Gerenciamento de softwares
-- Cadastro de softwares.
-- Associação de softwares aos fornecedores.
-- Registro de versões instaladas e recomendadas.
-- Identificação de softwares desatualizados.
-- Edição e exclusão de registros.
+- Overview of software inventory indicators.
+- Total number of registered software products and vendors.
+- Monitoring of active, expired, and expiring licenses.
+- Identification of outdated software.
+- Annual software cost overview.
+- Charts displaying software distribution by vendor and costs by vendor.
 
-### Gerenciamento de fornecedores
-- Cadastro de fornecedores.
-- Registro de informações de contato.
-- Consulta, edição e exclusão de fornecedores.
+### Software Management
 
-### Gerenciamento de licenças
-- Cadastro de licenças.
-- Controle de quantidade e custos anuais.
-- Registro de datas de início e vencimento.
-- Identificação de licenças vencidas, ativas e próximas do vencimento.
-- Edição e exclusão de registros.
+- Register software products.
+- Associate software with vendors.
+- Track installed and recommended versions.
+- Identify outdated software.
+- Edit and delete software records.
 
-### Inteligência artificial
-- Integração com Ollama para execução de IA local.
-- Geração de recomendações para auxiliar na gestão de ativos de software.
-- Análise de informações para apoiar decisões administrativas.
+### Vendor Management
 
-## Tecnologias utilizadas
+- Register software vendors.
+- Store vendor contact information.
+- View, edit, and delete vendor records.
 
-| Tecnologia | Aplicação |
+### License Management
+
+- Register software licenses.
+- Manage license quantities and annual costs.
+- Track license start and expiration dates.
+- Identify active, expired, and expiring licenses.
+- Edit and delete license records.
+
+### Artificial Intelligence Integration
+
+- Integration with Ollama for locally hosted AI execution.
+- AI-generated recommendations to support software asset management.
+- Analysis of registered information to assist administrative decision-making.
+
+## Technologies
+
+| Technology | Purpose |
 |---|---|
-| HTML5 | Estrutura da interface |
-| CSS3 | Estilização e responsividade |
-| JavaScript | Interatividade e integração com a API |
-| Chart.js | Visualização de dados em gráficos |
-| Python | Desenvolvimento do backend |
-| FastAPI | Construção da API REST |
-| SQLite | Banco de dados |
-| Ollama | Execução local de inteligência artificial |
+| HTML5 | Frontend structure |
+| CSS3 | Styling and responsive interface |
+| JavaScript | Frontend interactivity and API integration |
+| Chart.js | Data visualization and charts |
+| Python | Backend development |
+| FastAPI | REST API development |
+| SQLite | Database management |
+| Ollama | Local Artificial Intelligence integration |
 
-## Estrutura do projeto
+## Project Structure
 
 ```text
 gestao-softwares/
@@ -77,70 +94,107 @@ gestao-softwares/
 └── README.md
 ```
 
-*Observação: a estrutura acima representa a organização principal do projeto; arquivos adicionais podem existir nas pastas.*
+*Note: This tree represents the main project structure. Additional files and modules may exist.*
 
-## Como executar o projeto
+## Getting Started
 
-### 1. Clonar o repositório
+Follow the steps below to run the application locally.
+
+### Prerequisites
+
+Make sure you have installed:
+
+- Python 3
+- Git
+- Ollama (for AI features)
+- Visual Studio Code (recommended for frontend development)
+
+### 1. Clone the repository
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/Maria-Basilio/gestao-softwares.git
 cd gestao-softwares
 ```
 
-### 2. Configurar o ambiente virtual
+### 2. Set up the virtual environment
 
 ```bash
 cd backend
 python3 -m venv .venv
+```
+
+Activate the environment:
+
+**macOS / Linux**
+
+```bash
 source .venv/bin/activate
 ```
 
-### 3. Instalar as dependências
+**Windows**
+
+```bash
+.venv\Scripts\activate
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Iniciar o backend
+### 4. Start the backend
 
 ```bash
 uvicorn main:app --reload
 ```
 
-A API ficará disponível em:
+The API will be available at:
 
-```text
-http://127.0.0.1:8000
-```
+`http://127.0.0.1:8000`
 
-A documentação interativa pode ser acessada em:
+Interactive API documentation:
 
-```text
-http://127.0.0.1:8000/docs
-```
+`http://127.0.0.1:8000/docs`
 
-### 5. Iniciar o frontend
+### 5. Run the frontend
 
-Com o backend em execução, abra a pasta `frontend` utilizando uma extensão como Live Server no VS Code.
+With the backend running, open the `frontend` folder using a development server, such as the Live Server extension in Visual Studio Code.
 
-O frontend está configurado para consumir a API local em `http://127.0.0.1:8000`.
+The frontend is configured to communicate with the local API at:
 
-### 6. Configurar a inteligência artificial local
+`http://127.0.0.1:8000`
 
-Instale o Ollama e disponibilize o modelo utilizado pelo projeto:
+### 6. Configure local AI
+
+Install Ollama and download the model used by the project:
 
 ```bash
 ollama pull llama3.2
 ```
 
-Inicie o Ollama antes de utilizar as funcionalidades de inteligência artificial.
+Make sure Ollama is running before accessing the AI-powered features.
 
-## Objetivo do projeto
+## Project Goals
 
-O Nexus ITAM busca simplificar o gerenciamento de ativos de software, oferecendo uma visão centralizada sobre inventário, fornecedores, licenças, custos e atualizações.
+Nexus ITAM aims to make software asset management more efficient by providing a centralized view of software inventory, vendors, licenses, costs, and updates.
 
-Além do controle operacional, a aplicação utiliza inteligência artificial local para transformar os dados cadastrados em recomendações que podem auxiliar na identificação de riscos e oportunidades de melhoria.
+Beyond operational management, the application explores the use of locally hosted Artificial Intelligence to turn registered information into actionable recommendations, helping identify potential risks and opportunities for improvement.
 
-**Nexus ITAM**  
-*Mais controle, inteligência e eficiência na gestão de ativos de software.*
+## Author
+
+**Maria Eduarda Basilio**
+
+Software Engineering Student | Backend Development | Artificial Intelligence
+
+[GitHub Profile](https://github.com/Maria-Basilio)
+
+---
+
+<div align="center">
+
+**Nexus ITAM**
+
+*More control. More intelligence. Better software asset management.*
+
+</div>
